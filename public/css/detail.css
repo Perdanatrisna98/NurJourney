@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    width: 100%;
+}
+
+section, div {
+    max-width: 100%;
+    /* overflow-x: hidden !important; */
+}
+
+header, .hero, .why,
+.pilihan-paket, .testimoni, .modal,
+.faq-section, footer {
+    width: 100%;
+}
+
+/* Navbar */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+header.scrolled {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 80px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    transition: color 0.3s;
+}
+
+header.scrolled .logo {
+    color: #000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header.scrolled nav ul li a {
+    color: #333;
+}
+
+nav ul li a:hover {
+    color: #f7c948;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: #fff;
+    color: #333;
+    min-width: 150px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background: #f7c948;
+    color: #000;
+}
+
+.btn-konsultasi {
+    background: #f7c948;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-konsultasi:hover {
+    background: #ffdd52;
+}
+
+/* Toggle Bars */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: #d9d9d9;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+header.scrolled .menu-toggle {
+    color: #000;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* Detail Paket */
+/* ================= DETAIL PAKET ================= */
+.detail-paket {
+  background: #f9f9f9; /* ganti dari hijau gelap → abu terang agar teks jelas */
+  color: #222;
+  padding: 140px 80px 100px;
+}
+
+.detail-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.detail-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.detail-header img {
+  width: 450px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.detail-header img:hover {
+  transform: scale(1.03);
+}
+
+.detail-info {
+  max-width: 500px;
+}
+
+.detail-info h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #022b2b;
+  margin-bottom: 10px;
+}
+
+.detail-info .subtitle {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.price-box span {
+  color: #777;
+  font-size: 14px;
+}
+
+.price-box h3 {
+  color: #000;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.btn-daftar {
+  display: inline-block;
+  background: #f7c948;
+  color: #000;
+  font-weight: 600;
+  padding: 12px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.btn-daftar:hover {
+  background: #ffdd52;
+  transform: translateY(-3px);
+}
+
+/* ===== Isi Detail ===== */
+.detail-body {
+  background: #fff;
+  border-radius: 18px;
+  padding: 50px 60px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  line-height: 1.8;
+}
+
+.detail-body h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #022b2b;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.detail-body p {
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.detail-body ul li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.detail-body ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #f7c948;
+  font-weight: bold;
+}
+
+
+/* Footer */
+footer {
+    background: #fff;
+    color: #222;
+    padding: 50px 80px 20px;
+    position: relative;
+}
+
+.footer-top-line {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-about {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer-about h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer-about p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #555;
+    border-radius: 50%;
+    font-size: 25px;
+    color: #555;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    color: #fff;
+    background-color: #f7c948;
+    border-color: #f7c948;
+}
+
+.footer-links h4,
+.footer-address h4,
+.footer-hours h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 6px;
+}
+
+.footer-links ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #f7c948;
+}
+
+.footer-address p,
+.footer-hours p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}
+
+.footer-strong {
+    color: #000;
+}
+
+.dropdown-content { 
+    display: none; /* default */ 
+}
+
+.dropdown-content.show { 
+    display: block; /* atau flex */ 
+}
+
+/* Responsive Mobile */
+@media (max-width: 700px) {
+    body {
+        width: 100vw;
+        font-size: 14px;
+        overflow-x: hidden;
+    }
+
+    header {
+        padding: 12px 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        color: #d9d9d9;
+        cursor: pointer;
+    }
+
+    header.scrolled .menu-toggle {
+        color: #000;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(50vh - 60px);
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        padding: 0;
+        transition: left 0.4s ease;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+    }
+
+    .mobile-konsultasi {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .mobile-konsultasi .btn-konsultasi {
+        display: inline-block;
+        width: 90%;
+        max-width: 360px;
+        margin: 25px auto 10px;
+        font-size: 18px;
+        padding: 16px 0;
+        text-align: center;
+        font-weight: 700;
+        background: #f7c948;
+        color: #000;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-konsultasi .btn-konsultasi:hover {
+        background: #ffe067;
+        transform: translateY(-2px);
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    footer {
+        padding: 20px 25px 30px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .footer-about h3 {
+        font-size: 20px;
+    }
+
+    .footer-about p {
+        font-size: 13px;
+    }
+
+    .footer-links ul li a,
+    .footer-address p,
+    .footer-hours p {
+        font-size: 13px;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .footer-socials a {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .footer-bottom,
+    .footer-top-line {
+        font-size: 12px;
+    }
+
+    .detail-paket {
+    padding: 80px 25px;
+  }
+
+  .detail-paket {
+    padding: 100px 25px 60px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .detail-header img {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .detail-info h2 {
+    font-size: 26px;
+  }
+
+  .detail-body {
+    padding: 25px 20px;
+  }
+
+  .detail-body h3 {
+    font-size: 20px;
+  }
+
+  .detail-body p,
+  .detail-body ul li {
+    font-size: 14px;
+  }
+}

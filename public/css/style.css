@@ -1,0 +1,913 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    background-color: #022b2b;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    width: 100%;
+}
+
+section, div {
+    max-width: 100%;
+    /* overflow-x: hidden !important; */
+}
+
+header, .hero, .why,
+.pilihan-paket, .testimoni, .modal,
+.faq-section, footer {
+    width: 100%;
+}
+
+/* Navbar */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+header.scrolled {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 80px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #d9d9d9;
+    transition: color 0.3s;
+}
+
+header.scrolled .logo {
+    color: #000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #d9d9d9;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header.scrolled nav ul li a {
+    color: #333;
+}
+
+nav ul li a:hover {
+    color: #f7c948;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: #fff;
+    color: #333;
+    min-width: 150px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.dropdown-content a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background: #f7c948;
+    color: #000;
+}
+
+.btn-konsultasi {
+    background: #f7c948;
+    color: #000;
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-konsultasi:hover {
+    background: #ffdd52;
+}
+
+/* Toggle Bars */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    color: #d9d9d9;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+header.scrolled .menu-toggle {
+    color: #000;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 170px 80px 60px;
+    gap: 150px;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 540px;
+    margin-left: 100px;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    line-height: 1.3;
+}
+
+.highlight {
+    color: #f7c948;
+}
+
+.subtext {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #d1d1d1;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 12px;
+}
+
+/* Tombol Hero */
+.btn-yellow {
+    background-color: #f7c948;
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-yellow:hover {
+    background-color: #eab308;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #f7c948;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background-color: #f7c948;
+    color: #000;
+}
+
+/* panah bergerak ketika button di-hover */
+.btn-outline span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-outline:hover span {
+    transform: rotate(8deg) translateX(4px);
+}
+
+/* Gambar Hero */
+.hero-image {
+    margin-right: 150px;
+    margin-left: 60px;
+}
+
+.hero-image img {
+    width: 370px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #033b3b;
+    transition: 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.03);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal {
+    background: #fff;
+    color: #333;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: popIn 0.4s ease;
+    position: relative;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-image {
+    width: 50%;
+    padding: 10px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.modal-content {
+    padding: 25px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.modal-label {
+    background: #d9d9d9;
+    color: #9e9e9e;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 30px;
+    align-self: flex-start;
+}
+
+.modal-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+}
+
+.modal-desc {
+    font-size: 12px;
+    color: #333;
+}
+
+.modal-offer {
+    background: #fde9a9;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #111;
+    font-size: 18px;
+    margin-top: 5px;
+    border: 2px solid #f7c948;
+}
+
+.btn-konsultasi-offer {
+    background: #f7c948;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-konsultasi-offer:hover {
+    background: #ffdd52;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #eee;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    color: #444;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    background: #ccc;
+}
+
+.modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.modal-terms {
+    font-size: 11px;
+    color: #333;
+    margin-left: auto;
+    text-align: left;
+}
+
+/* Paket */
+.pilihan-paket {
+    text-align: center;
+    padding: 100px 70px;
+    background: #fff;
+}
+
+.pilihan-paket h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.pilihan-paket p {
+    color: #555;
+    margin-bottom: 50px;
+}
+
+.paket-card-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.paket-card {
+    flex: 1 1 calc(33.333% - 30px);
+    max-width: 330px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    width: 310px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.paket-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.paket-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.paket-content {
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.paket-content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.paket-content p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.paket-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.btn-paket {
+    display: block;
+    background: #f7c948;
+    color: #000;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px 0;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    margin-top: auto;
+}
+
+.btn-paket:hover {
+    background: #ffdd52;
+}
+
+/* Footer */
+footer {
+    background: #fff;
+    color: #222;
+    padding: 50px 80px 20px;
+    position: relative;
+}
+
+.footer-top-line {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-about {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer-about h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer-about p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #555;
+    border-radius: 50%;
+    font-size: 25px;
+    color: #555;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    color: #fff;
+    background-color: #f7c948;
+    border-color: #f7c948;
+}
+
+.footer-links h4,
+.footer-address h4,
+.footer-hours h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 6px;
+}
+
+.footer-links ul li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #f7c948;
+}
+
+.footer-address p,
+.footer-hours p {
+    color: #555;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-bottom {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+}
+
+.footer-strong {
+    color: #000;
+}
+
+.dropdown-content { 
+    display: none; /* default */ 
+}
+
+.dropdown-content.show { 
+    display: block; /* atau flex */ 
+}
+
+/* Responsive Mobile */
+@media (max-width: 700px) {
+    body {
+        width: 100vw;
+        font-size: 14px;
+        overflow-x: hidden;
+    }
+
+    header {
+        padding: 12px 20px;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        color: #d9d9d9;
+        cursor: pointer;
+    }
+
+    header.scrolled .menu-toggle {
+        color: #000;
+    }
+
+    nav ul {
+        position: fixed;
+        top: 60px;
+        left: -100%;
+        width: 100%;
+        height: calc(50vh - 60px);
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        padding: 0;
+        transition: left 0.4s ease;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+    }
+
+    .mobile-konsultasi {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .mobile-konsultasi .btn-konsultasi {
+        display: inline-block;
+        width: 90%;
+        max-width: 360px;
+        margin: 25px auto 10px;
+        font-size: 18px;
+        padding: 16px 0;
+        text-align: center;
+        font-weight: 700;
+        background: #f7c948;
+        color: #000;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-konsultasi .btn-konsultasi:hover {
+        background: #ffe067;
+        transform: translateY(-2px);
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .pilihan-paket {
+        padding: 60px 20px;
+    }
+
+    .pilihan-paket h2 {
+        font-size: 22px;
+    }
+
+    .paket-card-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .paket-card {
+        width: 90%;
+    }
+
+    .paket-content h3 {
+        font-size: 16px;
+    }
+
+    .paket-content p {
+        font-size: 13px;
+    }
+
+    footer {
+        padding: 20px 25px 30px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 25px;
+    }
+
+    .footer-about h3 {
+        font-size: 20px;
+    }
+
+    .footer-about p {
+        font-size: 13px;
+    }
+
+    .footer-links ul li a,
+    .footer-address p,
+    .footer-hours p {
+        font-size: 13px;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .footer-socials a {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .footer-bottom,
+    .footer-top-line {
+        font-size: 12px;
+    }
+
+    .modal {
+        flex-direction: column;
+        width: 90%;
+        max-width: 380px;
+        border-radius: 16px;
+        padding: 10px 0;
+        animation: slideUp 0.4s ease;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    .modal-image {
+        width: 100%;
+        height: 180px;
+        padding: 0 15px;
+    }
+
+    .modal-image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        object-fit: cover;
+    }
+
+    .modal-content {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .modal-label {
+        align-items: center;
+        font-size: 12px;
+    }
+
+    .modal-content h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .modal-desc{
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .modal-offer {
+        font-size: 16px;
+        padding: 10px 15px;
+        margin: 10px 0;
+    }
+
+    .btn-konsultasi-offer {
+        width: 100%;
+        font-size: 15px;
+        padding: 12px 30px;
+        border-radius: 25px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 15px;
+    }
+
+    .modal-terms {
+        text-align: center;
+        font-size: 11px;
+        margin: 0;
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+
+    .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 100px 25px 60px;
+    gap: 40px;
+  }
+
+  .hero-text {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 26px;
+    line-height: 1.4;
+  }
+
+  .subtext {
+    font-size: 14px;
+    color: #e0e0e0;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .btn-yellow,
+  .btn-outline {
+    width: 85%;
+    font-size: 15px;
+    padding: 12px 0;
+  }
+
+  .hero-image {
+    margin: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 18px;
+  }
+}
