@@ -57,22 +57,19 @@
 
         <div class="paket-card-wrapper">
             @foreach ($paket as $item)
-<div class="paket-card" data-aos="fade-up">
-    @foreach ($paket as $p)
-    <img src="{{ asset($p->gambar) }}" alt="{{ $p->nama_paket }}">
-@endforeach
-    <div class="paket-content">
-        <h3>{{ $item->nama_paket }}</h3>
-        <p>{{ $item->deskripsi }}</p>
-        <div class="paket-price">
-            <span>Mulai dari</span>
-            <span>Rp {{ number_format($item->harga, 0, ',', '.') }}</span>
-        </div>
-        <a href="{{ route('detail.show', $p->id) }}" class="btn-paket">Lihat Selengkapnya</a>
-    </div>
-</div>
-@endforeach
-
+                <div class="paket-card" data-aos="fade-up">
+                    <img src="{{ asset($item->gambar) }}" alt="{{ $item->nama_paket }}">
+                    <div class="paket-content">
+                        <h3>{{ $item->nama_paket }}</h3>
+                        <p>{{ $item->deskripsi }}</p>
+                        <div class="paket-price">
+                            <span>Mulai dari</span>
+                            <span>Rp {{ number_format($item->harga, 0, ',', '.') }}</span>
+                        </div>
+                        <a href="{{ route('detail.show', $item->id) }}" class="btn-paket" target="_blank">Lihat Selengkapnya</a>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>

@@ -17,7 +17,7 @@ return new class extends Migration
         $table->enum('kategori', ['haji','umroh','wisata']);
         $table->string('harga');
         $table->text('deskripsi');
-        $table->string('gambar'); // path file
+        $table->string('gambar'); 
         $table->timestamps();
     });
     }

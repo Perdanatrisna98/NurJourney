@@ -16,4 +16,11 @@ class Paket extends Model
         'deskripsi',
         'gambar',
     ];
+
+public function detail()
+{
+    return $this->hasOne(Detail::class);
+}
+
+
 }

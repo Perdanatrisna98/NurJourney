@@ -27,9 +27,7 @@
                             {{ __('Kelola Paket') }}
                         </x-nav-link>
 
-                        <x-nav-link :href="route('admin.detail.index')" :active="request()->routeIs('admin.paket.*')">
-                            {{ __('Kelola Detail Paket') }}
-                        </x-nav-link>
+                        
 
                     @endif
 
@@ -117,7 +115,7 @@
             @if(Auth::user()->role === 'admin')
                 <x-responsive-nav-link :href="route('admin.staff.index')">{{ __('Kelola Staff') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.paket.index')">{{ __('Kelola Paket') }}</x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('admin.detail.index')">{{ __('Kelola Detail Paket') }}</x-responsive-nav-link>
+                
             @endif
 
             @if(Auth::user()->role === 'staff')

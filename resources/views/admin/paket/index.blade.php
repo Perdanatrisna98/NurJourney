@@ -28,7 +28,8 @@
                             <td class="border p-2">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td class="border p-2 text-center">
                                 <a href="{{ route('admin.paket.edit', $item->id) }}" class="text-blue-600">Edit</a> |
-                                <a href="{{ route('detail.show', $item->id) }}">Detail</a> |
+                                <a href="{{ route('admin.detail.create', $item->id) }}" class="text-blue-600 hover:underline">Kelola Detail</a> |
+                                <a href="{{ route('admin.detail.edit', $item->id) }}" class="text-blue-600 hover:underline">Edit Detail</a> |
                                 <form action="{{ route('admin.paket.destroy', $item->id) }}" method="POST" class="inline">
                                     @csrf @method('DELETE')
                                     <button onclick="return confirm('Yakin hapus?')" class="text-red-600">Hapus</button>

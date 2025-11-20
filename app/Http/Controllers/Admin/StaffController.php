@@ -10,15 +10,13 @@ use Illuminate\Support\Facades\Hash;
 class StaffController extends Controller
 {
     public function index()
-    {
-        // ambil semua user dengan role 'staff'
+    {     
         $staffs = User::where('role', 'staff')->get();
         return view('admin.staff.index', compact('staffs'));
     }
 
     public function create()
     {
-        // halaman form tambah staff
         return view('admin.staff.create');
     }
 
