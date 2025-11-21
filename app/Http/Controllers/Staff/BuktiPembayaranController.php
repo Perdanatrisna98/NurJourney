@@ -4,64 +4,82 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\BuktiPembayaran;
+use App\Models\Jamaah;
 
 class BuktiPembayaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('staff.bukti-pembayaran.index', [
-            'title' => 'Bukti Pembayaran'
-        ]);
+        $bukti = BuktiPembayaran::with('jamaah')->latest()->get();
+        return view('staff.bukti-pembayaran.index', compact('bukti'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $jamaah = Jamaah::all();
+        return view('staff.bukti-pembayaran.create', compact('jamaah'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jamaah_id' => 'required|exists:jamaahs,id',
+            'file' => 'required|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $fileName = time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path('image/bukti'), $fileName);
+
+        BuktiPembayaran::create([
+            'jamaah_id' => $request->jamaah_id,
+            'file' => $fileName,
+            'status' => 'pending'
+        ]);
+
+        return redirect()->route('staff.bukti-pembayaran.index')->with('success', 'Bukti pembayaran berhasil disimpan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+public function edit(BuktiPembayaran $bukti)
+{
+    $jamaah = Jamaah::all(); // kalau mau pilih jamaah
+    return view('staff.bukti-pembayaran.edit', compact('bukti','jamaah'));
+}
+
+
+public function update(Request $request, BuktiPembayaran $bukti)
+{
+    $request->validate([
+        'jamaah_id' => 'required|exists:jamaahs,id',
+        'file' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'status' => 'required|in:pending,valid'
+    ]);
+
+    if($request->hasFile('file')){
+        $fileName = time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path('image/bukti'), $fileName);
+        $bukti->file = $fileName;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    $bukti->jamaah_id = $request->jamaah_id;
+    $bukti->status = $request->status;
+    $bukti->save();
+
+    return redirect()->route('staff.bukti-pembayaran.index')->with('success', 'Bukti pembayaran berhasil diupdate!');
+}
+
+public function destroy(BuktiPembayaran $bukti)
+{
+    $file_path = public_path('image/bukti/' . $bukti->file);
+
+    if(file_exists($file_path) && is_file($file_path)) {
+        unlink($file_path);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    $bukti->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    return redirect()->route('staff.bukti-pembayaran.index')->with('success', 'Bukti pembayaran berhasil dihapus.');
+}
+
+
 }

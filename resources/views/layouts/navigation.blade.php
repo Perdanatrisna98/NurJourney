@@ -27,7 +27,13 @@
                             {{ __('Kelola Paket') }}
                         </x-nav-link>
 
-                        
+                        <x-nav-link :href="route('admin.data-jamaah.index')" :active="request()->routeIs('staff.data-jamaah.*')">
+                            {{ __('Data Jamaah') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="route('admin.bukti-pembayaran.index')" :active="request()->routeIs('staff.bukti-pembayaran.*')">
+                            {{ __('Bukti Pembayaran') }}
+                        </x-nav-link>
 
                     @endif
 
@@ -35,10 +41,6 @@
                     @if(Auth::user()->role === 'staff')
                         <x-nav-link :href="route('staff.konsultasi.index')" :active="request()->routeIs('staff.konsultasi.*')">
                             {{ __('Kelola Konsultasi') }}
-                        </x-nav-link>
-
-                        <x-nav-link :href="route('staff.pendaftaran.index')" :active="request()->routeIs('staff.pendaftaran.*')">
-                            {{ __('Pendaftaran Jamaah') }}
                         </x-nav-link>
 
                         <x-nav-link :href="route('staff.data-jamaah.index')" :active="request()->routeIs('staff.data-jamaah.*')">
@@ -115,12 +117,12 @@
             @if(Auth::user()->role === 'admin')
                 <x-responsive-nav-link :href="route('admin.staff.index')">{{ __('Kelola Staff') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('admin.paket.index')">{{ __('Kelola Paket') }}</x-responsive-nav-link>
-                
+                <x-responsive-nav-link :href="route('admin.data-jamaah.index')">{{ __('Data Jamaah') }}</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('admin.bukti-pembayaran.index')">{{ __('Bukti Pembayaran') }}</x-responsive-nav-link>
             @endif
 
             @if(Auth::user()->role === 'staff')
                 <x-responsive-nav-link :href="route('staff.konsultasi.index')">{{ __('Kelola Konsultasi') }}</x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('staff.pendaftaran.index')">{{ __('Pendaftaran Jamaah') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('staff.data-jamaah.index')">{{ __('Data Jamaah') }}</x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('staff.bukti-pembayaran.index')">{{ __('Bukti Pembayaran') }}</x-responsive-nav-link>
             @endif

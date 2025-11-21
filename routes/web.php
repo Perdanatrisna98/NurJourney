@@ -12,10 +12,18 @@ use App\Models\Detail;
 
 
 use App\Http\Controllers\Staff\KonsultasiController;
+use App\Http\Controllers\Staff\StaffKonsultasiController;
 use App\Http\Controllers\Staff\PendaftaranController;
 use App\Http\Controllers\Staff\DataJamaahController;
 use App\Http\Controllers\Staff\BuktiPembayaranController;
+use App\Http\Controllers\UserKonsultasiController;
+use App\Http\Controllers\StaffJamaahController;
 
+Route::get('/konsultasi', [UserKonsultasiController::class, 'create'])
+    ->name('konsultasi.index');
+
+Route::post('/konsultasi', [UserKonsultasiController::class, 'store'])
+    ->name('konsultasi.store');
 
 // Halaman utama
 Route::get('/', fn() => view('welcome'));
@@ -34,8 +42,6 @@ Route::get('/wisataHalal', function () {
     $paket = Paket::where('kategori', 'wisata')->get();
     return view('wisataHalal.index', compact('paket'));
 });
-
-Route::get('/konsultasi', fn() => view('konsultasi.index'));
 
 
 // Detail paket user
@@ -82,7 +88,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             Route::resource('konsultasi', KonsultasiController::class);
             Route::resource('pendaftaran', PendaftaranController::class);
-            Route::resource('data-jamaah', DataJamaahController::class);
+            Route::resource('data-jamaah', \App\Http\Controllers\Admin\DataJamaahController::class);
             Route::resource('bukti-pembayaran', BuktiPembayaranController::class);
 
             Route::resource('staff', AdminStaffController::class);
@@ -106,29 +112,74 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::delete('/{detail}', [PaketController::class, 'detailDestroy'])
                     ->name('destroy');
 
+                Route::get('/data-jamaah', [\App\Http\Controllers\Admin\DataJamaahController::class, 'index'])
+                    ->name('data-jamaah.index');
+
+                Route::get('bukti-pembayaran', [BuktiPembayaranController::class, 'index'])
+                    ->name('bukti-pembayaran.index');
             });
         });
 
     // Staff
     Route::middleware('role:staff')
-        ->prefix('staff')
-        ->name('staff.')
-        ->group(function () {
+    ->prefix('staff')
+    ->name('staff.') // semua route di bawah akan otomatis diawali 'staff.'
+    ->group(function () {
 
-            Route::get('/dashboard', [StaffController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [StaffController::class, 'index'])
+            ->name('dashboard');
 
-            Route::get('/konsultasi', fn() => view('staff.konsultasi.index'))
-                ->name('konsultasi.index');
+        // route konsultasi
+        Route::get('/konsultasi', [StaffKonsultasiController::class, 'index'])
+            ->name('konsultasi.index'); // jadinya 'staff.konsultasi.index'
 
-            Route::get('/staff/pendaftaran', fn() => view('staff.pendaftaran.index'))
-                ->name('pendaftaran.index');
+        Route::put('/konsultasi/{konsultasi}/status', [StaffKonsultasiController::class, 'updateStatus'])
+            ->name('konsultasi.status');
 
-            Route::get('/staff/data-jamaah', fn() => view('staff.data-jamaah.index'))
-                ->name('data-jamaah.index');
+        // form jamaah
+        Route::get('/jamaah', [App\Http\Controllers\StaffJamaahController::class, 'index'])
+        ->name('jamaah.index');
 
-            Route::get('/staff/bukti-pembayaran', fn() => view('staff.bukti-pembayaran.index'))
-                ->name('bukti-pembayaran.index');
-        });
+        Route::get('/jamaah/create', [App\Http\Controllers\StaffJamaahController::class, 'create'])
+            ->name('jamaah.create');
+
+        Route::post('/jamaah/store', [App\Http\Controllers\StaffJamaahController::class, 'store'])
+            ->name('jamaah.store');
+
+        // halaman data-jamaah, bukti pembayaran
+        // Data Jamaah
+        Route::get('/data-jamaah', [StaffJamaahController::class, 'index'])
+            ->name('data-jamaah.index');
+        
+        Route::get('/staff/jamaah/{jamaah}/edit', [StaffJamaahController::class, 'edit'])
+            ->name('jamaah.edit');
+
+        Route::put('/staff/jamaah/{jamaah}', [StaffJamaahController::class, 'update'])
+            ->name('jamaah.update');
+
+        Route::delete('/staff/jamaah/{jamaah}', [StaffJamaahController::class, 'destroy'])
+            ->name('jamaah.destroy');
+
+        // Bukti Pembayaran
+        Route::get('bukti-pembayaran', [BuktiPembayaranController::class, 'index'])
+            ->name('bukti-pembayaran.index');
+
+        Route::get('bukti-pembayaran/create', [BuktiPembayaranController::class, 'create'])
+            ->name('bukti-pembayaran.create');
+
+        Route::post('bukti-pembayaran', [BuktiPembayaranController::class, 'store'])
+            ->name('bukti-pembayaran.store');
+
+        Route::get('bukti-pembayaran/{bukti}/edit', [BuktiPembayaranController::class, 'edit'])
+            ->name('bukti-pembayaran.edit');
+
+        Route::put('bukti-pembayaran/{bukti}', [BuktiPembayaranController::class, 'update'])
+            ->name('bukti-pembayaran.update');
+
+        Route::delete('bukti-pembayaran/{bukti}', [BuktiPembayaranController::class, 'destroy'])
+            ->name('bukti-pembayaran.destroy');
+    });
+
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

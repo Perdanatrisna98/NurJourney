@@ -33,7 +33,8 @@
                 DP Mulai dari Rp 1.000.000
             </div>
             <div class="modal-footer">
-                <button class="btn-konsultasi-offer" onclick="window.loaction.href='/konsultasi'">Konsultasi</button>
+                <a class="btn-konsultasi-offer" style="text-decoration: none; color: #000;" href="/konsultasi">Konsultasi</a>
+                <!-- <button class="btn-konsultasi-offer" onclick="window.loaction.href='/konsultasi'">Konsultasi</button> -->
                 <small class="modal-terms"><span style="color:red;">*</span>S&K Berlaku</small>
             </div>
         </div>
@@ -98,7 +99,7 @@
                         <span>Mulai dari</span>
                         <span>Rp 50.000.000</span>
                     </div>
-                    <a href="#" class="btn-paket">Lihat Selengkapnya</a>
+                    <a href="/haji" class="btn-paket">Lihat Selengkapnya</a>
                 </div>
             </div>
 
@@ -114,13 +115,13 @@
                         <span>Mulai dari</span>
                         <span>Rp 29.900.000</span>
                     </div>
-                    <a href="#" class="btn-paket">Lihat Selengkapnya</a>
+                    <a href="/umroh" class="btn-paket">Lihat Selengkapnya</a>
                 </div>
             </div>
 
             <!-- Paket 3 -->
             <div class="paket-card" data-aos="fade-left">
-                <img src="{{ asset('image/tour-korea.jpg') }}" alt="Tour Korea">
+                <img src="{{ asset('image/tour korea.jpg') }}" alt="Tour Korea">
                 <div class="paket-content">
                     <h3>Tour Korea</h3>
                     <p>
@@ -130,7 +131,7 @@
                         <span>Mulai dari</span>
                         <span>Rp 17.400.000</span>
                     </div>
-                    <a href="#" class="btn-paket">Lihat Selengkapnya</a>
+                    <a href="/wisataHalal" class="btn-paket">Lihat Selengkapnya</a>
                 </div>
             </div>
         </div>

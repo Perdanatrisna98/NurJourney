@@ -12,23 +12,26 @@
                 Isi formulir konsultasi untuk mendapatkan informasi lebih lanjutl.
             </p>
 
-            <for>
+            <form action="{{ route('konsultasi.store') }}" method="POST">
+                @csrf
                 <label for="panggilan">Panggilan</label>
-                <select id="panggilan" required>
+                <select name="panggilan" id="panggilan" required>
                     <option value="">Pilih Panggilan</option>
                     <option value="bapak">Bapak</option>
                     <option value="ibu">Ibu</option>
                 </select>
 
                 <label for="nama">Nama Lengkap *</label>
-                <input type="text" name="" id="nama" placeholder="Nama Lengkap" required>
+                <input type="text" name="nama" id="nama" placeholder="Nama Lengkap" required>
+
                 <label for="wa">No WhatsApp *</label>
-                <input type="text" name="" id="wa" placeholder="089123456789" required>
-                <label for="pesa">Pesan</label>
-                <textarea name="" id="pesan" placeholder="Tulis pesan di sini..."></textarea>
+                <input type="text" name="wa" id="wa" placeholder="089123456789" required>
+
+                <label for="pesan">Pesan</label>
+                <textarea name="pesan" id="pesan" placeholder="Tulis pesan di sini..."></textarea>
 
                 <button type="submit">Konsultasi Sekarang</button>
-            </for>
+            </form>
         </div>
     </div>
 </div>
